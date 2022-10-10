@@ -11,6 +11,7 @@ import Services from './Components/Services'
 import Sidebar from './Components/Sidebar'
 import Footer from './Components/Footer'
 import SignUp from './Components/SignUp';
+import Login from './Components/Login';
 // import Preloader from './Components/Preloader';
 
 
@@ -29,6 +30,8 @@ function App() {
         <Contact/>
         {/* <Footer/> */}
         <SignUp/>
+        <Login/>
+
       
 
    

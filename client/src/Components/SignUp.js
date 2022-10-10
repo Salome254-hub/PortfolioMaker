@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../Images/logo.png';
+// import Logo from '../Images/logo.png';
 
 const SignUp = () => {
     return (
@@ -8,7 +8,7 @@ const SignUp = () => {
           <div class="row">
             <div class="col-12">
               <div class="section-heading">
-                <img src={Logo} class="logo"/><br/>
+                {/* <img src={Logo} class="logo"/> */}
               <h2 class="section-title">Welcome To PortMaker</h2>
                 <p class="section-description">Feel free to sign up.</p>
               </div>
@@ -21,6 +21,8 @@ const SignUp = () => {
                   <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-name" type="text" name="name" placeholder="First Name" required=""/></div>
                   <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-name" type="text" name="name" placeholder="Second Name" required=""/></div>
                   <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-email" type="email" name="email" placeholder="Email addres" required=""/></div>
+                  <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-email" type="email" name="username" placeholder="Username" required=""/></div>
+
                   <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-email" type="password" name="re-password" placeholder="Password" required=""/></div>
                   <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-email" type="password" name="re-password" placeholder="Repeat Password" required=""/></div>
 
