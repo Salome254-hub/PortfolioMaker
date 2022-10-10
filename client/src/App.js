@@ -10,12 +10,14 @@ import Projects from './Components/Projects'
 import Services from './Components/Services'
 import Sidebar from './Components/Sidebar'
 import Footer from './Components/Footer'
+// import Preloader from './Components/Preloader';
 
 
 
 function App() {
   return (
     <div className="App">
+      {/* <Preloader /> */}
       <Sidebar/>
       <div class="sections-wrapper">
         <Home />
