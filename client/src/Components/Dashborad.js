@@ -110,7 +110,7 @@ const Dashborad = () => {
   {/* //PROFILE */}
   <div class="row mt-3">
                         <div class="col-12">
-                            <div class="level1">
+                            <div class="level2">
                             <h6 className="text-white">Projects</h6>
                     <h6 className=" red_text text-white">Step 2</h6>
                             </div>
@@ -147,13 +147,9 @@ const Dashborad = () => {
                         <div class="col-12">
                             <form class="contact-form" id="contact-form" action="http://likeabawz.dk/exill/demo/codex/template/php/contact.php">
                                 <div class="row">
-                                    <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Title" required="true" /></div>
+                                    <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Service type" required="true" /></div>
                                     <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Description" required="true" /></div>
-                                    
-                                    <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Image URL" required="true" /><img style={{ height: "40px", width: "40px" }} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/></div>
-
-
-                                    <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Submit/Next step</button>
+                                     <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Submit/Next step</button>
                                         <p class="contact-feedback"></p>
                                     </div>
                                 </div>
@@ -164,7 +160,7 @@ const Dashborad = () => {
                       {/* //PROFILE */}
   <div class="row mt-3">
                         <div class="col-12">
-                            <div class="level1">
+                            <div class="level2">
                             <h6 className="text-white">Projects</h6>
                     <h6 className=" red_text text-white">Step 2</h6>
                             </div>

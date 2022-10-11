@@ -5,7 +5,7 @@ import Contact from './Components/Contact'
 import Dashborad from './Components/Dashborad'
 import HireMe from './Components/HireMe'
 import Home from './Components/Home'
-// import LandingPage from './Components/LandingPage'
+import LandingPage from './Components/LandingPage'
 import Projects from './Components/Projects'
 import Services from './Components/Services'
 import Sidebar from './Components/Sidebar'
@@ -22,7 +22,7 @@ function App() {
       {/* <Preloader /> */}
       {/* <Sidebar/> */}
       <div class="sections-wrapper">
-        <Dashborad/>
+        {/* <Dashborad/> */}
          {/* <Home />
         <AboutMe/>
         <Services/>
@@ -32,7 +32,7 @@ function App() {
          <Footer/> 
          <SignUp/>
         <Login/>  */}
-
+<LandingPage/>
       
 
    
