@@ -24,7 +24,6 @@ const Sidebar = () => {
           </ul>
         </div>
       </nav>
-    
     <div className="sections-wrapper">
     </div>
     </div>

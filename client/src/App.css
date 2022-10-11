@@ -41,3 +41,27 @@
   background-color: white;
   padding:15px;
 }
+.d_board{
+  height: 80px;
+  width: 80px;
+  
+}
+.red_line{
+  border-right: 2px #DC3545 solid;
+}
+
+.red_text{
+  color: #DC3545;
+}
+
+.level1{
+  height: 60px;
+  padding: 10px;
+  color: white !important;
+  width:100%;
+  background-color:#DC3545;
+}
+.form-control{
+
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+}

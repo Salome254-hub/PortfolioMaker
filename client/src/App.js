@@ -20,10 +20,10 @@ function App() {
   return (
     <div className="App">
       {/* <Preloader /> */}
-      <Sidebar/>
+      {/* <Sidebar/> */}
       <div class="sections-wrapper">
         <Dashborad/>
-         <Home />
+         {/* <Home />
         <AboutMe/>
         <Services/>
         <HireMe/>
@@ -31,7 +31,7 @@ function App() {
         <Contact/> 
          <Footer/> 
          <SignUp/>
-        <Login/> 
+        <Login/>  */}
 
       
 
