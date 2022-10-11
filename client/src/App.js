@@ -30,8 +30,10 @@ function App() {
         <Projects/>
         <Contact/> 
          <Footer/> 
-         <SignUp/>
+        //  <SignUp/>
         <Login/>  */}
+        {/* <SignUp/> */}
+        <Login/>
 <LandingPage/>
       
 
