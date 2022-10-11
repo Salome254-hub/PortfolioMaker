@@ -84,3 +84,7 @@
   border:none!important;
   border-radius: unset !important;
 }
+.port{
+  height: 80px;
+  width: 80px;
+}

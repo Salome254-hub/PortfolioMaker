@@ -1,5 +1,7 @@
 import React from 'react';
 import Logo from '../Images/logo.png'
+import Port from '../Images/portfolio.svg'
+
 
 const LandingPage = () => {
     return (
@@ -19,7 +21,19 @@ const LandingPage = () => {
                         </ul>
                     </div>
                 </nav>
-            <section class="home-area element-cover-bg" id="home-area">
+             
+                <section  class="single-section element-cover-bg hire-area" id="hire-area">
+                    <div class="row">
+                    <div class="col-lg-6">
+                        <img src={{Port}} class="port"/>
+                    </div>
+                    <div class="col-lg-6">
+
+</div>
+
+                        </div>
+
+                    </section>
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -28,7 +42,7 @@ const LandingPage = () => {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://p4.wallpaperbetter.com/wallpaper/492/496/909/costume-law-lawyer-businessman-wallpaper-preview.jpg" class="d-block w-100" alt="..."/>
+      <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydGZvbGlvJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&w=1000&q=80" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
@@ -58,9 +72,7 @@ const LandingPage = () => {
     <span class="sr-only">Next</span>
   </button>
 </div>
-      </section>
-
-      </div>
+     </div>
 
        
     );
