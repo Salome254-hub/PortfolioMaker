@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
     end
     #create a new project
     def create
-     project=project_params 
+     project=Project.create(project_params)
      render json: project, status: :created
     end
     #Edit an existing project 
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     end
      private 
     def find_project 
-      Power.find(params[:id])
+      Project.find(params[:id])
     end
     def project_params 
      params.permit(:project_title, :project_link, :image_url, :user_id)
