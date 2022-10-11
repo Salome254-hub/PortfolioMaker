@@ -23,15 +23,15 @@ function App() {
       <Sidebar/>
       <div class="sections-wrapper">
         <Dashborad/>
-        {/* <Home />
+         <Home />
         <AboutMe/>
         <Services/>
         <HireMe/>
         <Projects/>
-        <Contact/> */}
-        {/* <Footer/> */}
-        {/* <SignUp/>
-        <Login/> */}
+        <Contact/> 
+         <Footer/> 
+         <SignUp/>
+        <Login/> 
 
       
 
