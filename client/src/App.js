@@ -2,7 +2,7 @@
 import  './App.css';
 import AboutMe from './Components/AboutMe'
 import Contact from './Components/Contact'
-// import Dashborad from './Components/Dashborad'
+import Dashborad from './Components/Dashborad'
 import HireMe from './Components/HireMe'
 import Home from './Components/Home'
 // import LandingPage from './Components/LandingPage'
@@ -22,15 +22,16 @@ function App() {
       {/* <Preloader /> */}
       <Sidebar/>
       <div class="sections-wrapper">
-        <Home />
+        <Dashborad/>
+        {/* <Home />
         <AboutMe/>
         <Services/>
         <HireMe/>
         <Projects/>
-        <Contact/>
+        <Contact/> */}
         {/* <Footer/> */}
-        <SignUp/>
-        <Login/>
+        {/* <SignUp/>
+        <Login/> */}
 
       
 
