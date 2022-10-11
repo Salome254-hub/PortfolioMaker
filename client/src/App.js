@@ -22,19 +22,17 @@ function App() {
       {/* <Preloader /> */}
       {/* <Sidebar/> */}
       <div class="sections-wrapper">
-        {/* <Dashborad/> */}
-         {/* <Home />
-        <AboutMe/>
-        <Services/>
-        <HireMe/>
-        <Projects/>
-        <Contact/> 
-         <Footer/> 
-        //  <SignUp/>
-        <Login/>  */}
-        {/* <SignUp/> */}
+      <Home />
+      <AboutMe/>
+      <Services/>
+      <HireMe/>
+      <Projects/>
+      <Contact/> 
+        <SignUp/>
         <Login/>
 <LandingPage/>
+<Footer/>
+
       
 
    
