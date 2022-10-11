@@ -22,57 +22,19 @@ const LandingPage = () => {
                     </div>
                 </nav>
              
-                <section  class="single-section element-cover-bg hire-area" id="hire-area">
-                    <div class="row">
-                    <div class="col-lg-6">
-                        <img src={{Port}} class="port"/>
-                    </div>
-                    <div class="col-lg-6">
-
-</div>
+                <section  class="container-fluid bg-white_ center" id="hire-area">
+                   
+                        <img style={{ height: "190px", width: "190px", }} className="img-fluid sidebar-avatar no-border mb-3" src={Port} alt="Profile avatar" />
+                        <h3>Welcome, to PortFolio Maker</h3>
+                        <h6 className="slim">Our portfolio template is skillfully developed and adheres to the "portfolio norms" that hiring managers want. With a field-tested portfolio builder, you can stand out and get hired faster.</h6>
+                        <button class="btn button-main button-scheme">Get started for free</button>
+                    
+                    </section>
+                    
 
                         </div>
 
-                    </section>
-    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydGZvbGlvJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&w=1000&q=80" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://p4.wallpaperbetter.com/wallpaper/492/496/909/costume-law-lawyer-businessman-wallpaper-preview.jpg" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://p4.wallpaperbetter.com/wallpaper/492/496/909/costume-law-lawyer-businessman-wallpaper-preview.jpg" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </button>
-</div>
-     </div>
+   
 
        
     );
