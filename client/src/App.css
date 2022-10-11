@@ -72,3 +72,15 @@
   color: white !important;
   width:100%;
 }
+.carousel-control-prev{
+  border:none ;
+  background-color: transparent;
+}
+.carousel-control-next{
+  border:none ;
+  background-color: transparent;
+}
+.no-border{
+  border:none!important;
+  border-radius: unset !important;
+}

@@ -1,10 +1,25 @@
 import React from 'react';
+import Logo from '../Images/logo.png'
 
 const LandingPage = () => {
     return (
        
-            
-            <section class="home-area element-cover-bg" id="home-area" style={{ backgroundImage: `url("https://cdn.mind-diagnostics.org/uploads/mind-diagnostics/images/image/url/loving-someone-you-cant-have-how-to-let-go-1_.jpg.jpg")` }}>
+            <div>
+                   <nav className="sidebar" data-simplebar>
+                    <div className="sidebar-header"><a href="#home" data-scroll><img style={{ height: "65px", width: "65px", }} className="img-fluid sidebar-avatar no-border" src={Logo} alt="Profile avatar" /></a><span className="sidebar-name">PortMaker</span>
+                        {/* <p className="sidebar-status">Available for work</p> */}
+                    </div>
+                    <div className="sidebar-menu">
+                        <ul className="list-unstyled list-menu">
+                            <li><a className="nav-link" href="#home-area" data-scroll>Log in</a></li>
+                            <li><a className="nav-link" href="#home-area" data-scroll>Browse Porfolio</a></li>
+
+                            <li><a className="nav-link " href="#about-area" data-scroll><small>© PortMaker 2022</small></a></li>
+
+                        </ul>
+                    </div>
+                </nav>
+            <section class="home-area element-cover-bg" id="home-area">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -45,6 +60,7 @@ const LandingPage = () => {
 </div>
       </section>
 
+      </div>
 
        
     );
