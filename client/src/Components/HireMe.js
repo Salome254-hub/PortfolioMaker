@@ -6,7 +6,7 @@ const HireMe = () => {
         <section
           class="single-section element-cover-bg hire-area"
           id="hire-area"
-          style="background-image:url(img/hire.jpg)"
+          style={{ backgroundImage: `url("https://cdn.mind-diagnostics.org/uploads/mind-diagnostics/images/image/url/loving-someone-you-cant-have-how-to-let-go-1_.jpg.jpg")` }}
         >
           <div class="container">
             <div class="row row-custom">
