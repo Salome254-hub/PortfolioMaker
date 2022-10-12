@@ -189,17 +189,9 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
                     <Profile />
                     <Services/>
-
-
-                   
-
-
                 </div>
             </section >
         </div >

@@ -30,7 +30,7 @@ function App() {
       {/* <Projects/> */}
       {/* <Contact/>  */}
         <SignUp/>
-        {/* <Login/> */}
+        <Login/>
 {/* <LandingPage/> */}
 {/* <Footer/> */}
 

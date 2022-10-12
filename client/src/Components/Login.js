@@ -67,7 +67,7 @@ const Login = () => {
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12">
                                 <form class="contact-form " onSubmit={handleSubmit} id="contact-form" action="http://likeabawz.dk/exill/demo/codex/template/php/contact.php">
                                     <div class="row">
                                         <div class="col-12 col-md-12 form-group pt-4"><input class="form-control" id="contact-name" value={email} onChange={handleEmail} type="email" placeholder=" Email" required="" /></div>
