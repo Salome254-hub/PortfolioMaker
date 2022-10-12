@@ -8,7 +8,7 @@ const Projects = () => {
             <div class="row">
               <div class="col-12">
                 <div class="section-heading">
-                  <h2 class="section-title">Portfolio</h2>
+                  <h2 class="section-title">Projects</h2>
                   <p class="section-description">Showcasing some of my best work</p>
                 </div>
               </div>
