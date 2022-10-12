@@ -15,6 +15,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_153109) do
     t.string "service_title"
     t.string "description"
     t.integer "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "age"
+    t.string "location"
+    t.string "profile_url"
+    t.string "title"
+    t.string "description"
+    t.integer "phone_number"
+    t.string "linkedin_link"
+    t.string "github_link"
+    t.integer "sign_up", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
