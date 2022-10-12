@@ -12,7 +12,7 @@ import Sidebar from './Components/Sidebar'
 import Footer from './Components/Footer'
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
-// import Preloader from './Components/Preloader';
+import Preloader from './Components/Preloader';
 
 
 
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       {/* <Preloader /> */}
-      {/* <Sidebar/> */}
+      <Sidebar/>
       <div class="sections-wrapper">
       <Home />
       <AboutMe/>
@@ -30,7 +30,7 @@ function App() {
       <Contact/> 
         <SignUp/>
         <Login/>
-<LandingPage/>
+{/* <LandingPage/> */}
 <Footer/>
 
       

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ContactUs from '../Images/contactus.gif';
 const Contact = () => {
     return (
         <div>
@@ -8,6 +8,7 @@ const Contact = () => {
             <div class="row">
               <div class="col-12">
                 <div class="section-heading">
+                <img src={ContactUs} class="logo" /><br /><br />
                   <h2 class="section-title">Get in Touch</h2>
                   <p class="section-description">Feel free to contact me anytime</p>
                 </div>
