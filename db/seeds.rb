@@ -4,4 +4,6 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+#   Character.create(name: "Luke", movie: movies.first
+
+Service.create(service_title: "web development", description: "i am a web developer", user_id: 1)
