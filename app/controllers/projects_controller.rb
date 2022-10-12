@@ -31,8 +31,11 @@ class ProjectsController < ApplicationController
     end
     def project_params 
      params.permit(:project_title, :project_link, :image_url, :user_id)
+<<<<<<< HEAD
     end 
     def render_not_found_response
      render json: { error: "Project not found"}, status: :not_found
     end
+=======
+>>>>>>> 04e93c13c816283c8178a8354ecdf74c9bcb685e
 end
