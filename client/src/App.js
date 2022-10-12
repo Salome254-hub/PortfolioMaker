@@ -20,19 +20,19 @@ function App() {
   return (
     <div className="App">
       {/* <Preloader /> */}
-      {/* <Sidebar/> */}
+      <Sidebar/>
       <div class="sections-wrapper">
-      {/* <Home /> */}
-      {/* <AboutMe/> */}
-      {/* <Services/> */}
+      <Home />
+      <AboutMe/>
+      <Services/>
       <Dashboard/>
-      {/* <HireMe/> */}
-      {/* <Projects/> */}
-      {/* <Contact/>  */}
+      <HireMe/>
+      <Projects/>
+      <Contact/> 
         <SignUp/>
         <Login/>
-{/* <LandingPage/> */}
-{/* <Footer/> */}
+<LandingPage/>
+<Footer/>
 
       
 

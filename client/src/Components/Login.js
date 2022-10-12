@@ -15,8 +15,6 @@ const Login = () => {
     //HANDLING INPUT
     const handlePassword = (e) => {
         setPassword(e.target.value)
-        alert("working")
-        toast.success('Successfully added!')
     }
 
     const handleEmail = (e) => {
@@ -30,21 +28,23 @@ const Login = () => {
             password: password,
             email: email
         }
-       fetch("/Login", 
+       fetch("/login", 
        {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(objectTosend)
         })
         .then((rawData)=>{
-            rawData.json()
+        rawData.json()
+        
         })
       .then((response)=>   {
-
-            console.log(response.status)
+        setPassword("")
+        setEmail("")
+        toast.success('Logged in successfully!')
       }).catch((err) => {
         //  console.log(err.message);
-        toast.error('Successfully added:')
+        toast.error(err)
   
       });
   
@@ -68,11 +68,11 @@ const Login = () => {
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12">
-                                <form class="contact-form " onSubmit={handleSubmit} id="contact-form" action="http://likeabawz.dk/exill/demo/codex/template/php/contact.php">
+                                <form class="contact-form " onSubmit={handleSubmit} id="contact-form" >
                                     <div class="row">
                                         <div class="col-12 col-md-12 form-group pt-4"><input class="form-control" id="contact-name" value={email} onChange={handleEmail} type="email" placeholder=" Email" required="" /></div>
-                                        <div class="col-12 col-md-12 form-group text-left "><input  class="form-control mb-3" id="contact-email" value={email} onChange={handlePassword} type="password"  placeholder="Password" required="" />
-                                            <button class="btn button-main button-scheme" id="contact-submit" type="submit">Log in</button> <button class="btn button-main button-scheme mr-2" id="contact-submit" type="submit">Sign Up</button>
+                                        <div class="col-12 col-md-12 form-group text-left "><input  class="form-control mb-3" id="contact-email" value={password} onChange={handlePassword} type="password"  placeholder="Password" required="" />
+                                            <button class="btn button-main button-scheme" type="submit">Log in</button> <button class="btn button-main button-scheme mr-2"  type="submit">Sign Up</button>
                                         </div>
                                     </div>
                                 </form>

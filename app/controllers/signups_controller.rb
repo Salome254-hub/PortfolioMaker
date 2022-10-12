@@ -1,4 +1,7 @@
 class SignupsController < ApplicationController
+    
+    
+    
     #create a user signup action 
     def create
         signup = Signup.create(signup_params);
@@ -9,6 +12,14 @@ class SignupsController < ApplicationController
             render json: { errors: signup.errors.full_messages }, status: :unprocessable_entity
         end
     end
+    def show
+        signup = Signup.find_by(id: session[:signup_id])
+        if signup
+          render json: signup
+        else
+          render json: { error: "Not authorized" }, status: :unauthorized
+        end
+      end
     
     private
     def signup_params

@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
         if project.update(project_params)
             render json: project
         else 
+          
             render json: {errors: ["validation errors"]}
         end
     end

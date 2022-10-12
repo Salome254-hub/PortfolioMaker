@@ -11,6 +11,7 @@ class UsersController < ApplicationController
  def user_params
     params.permit(:first_name, :last_name, :email, :age, :location, :profile_url, :title, :description, :phone_number, :linkedin_link, :github_link, :sign_up)
  end
+ 
 def render_not_found_response
      render json: { error: "User not found"}, status: :not_found
     end
