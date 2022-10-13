@@ -2,6 +2,10 @@ class SignupsController < ApplicationController
     # before_action :create
     
   #create a user signup action 
+  def index
+    signup=Signup.all
+    render :json=>signup
+  end
     def create
         signup = Signup.create(signup_params);
         if signup.valid?
@@ -13,11 +17,14 @@ class SignupsController < ApplicationController
     end
     def show
         signup = Signup.find_by(id: session[:signup_id])
-        if signup
-          render json: signup
-        else
-          render json: { error: "Not authorized" }, status: :unauthorized
-        end
+        user=User.find_by(signup_id: signup.id)
+        service=Service.where(user_id: user.id)
+        project=Project.where(user_id: user.id)
+     
+          render json:{signup:signup,user:user, project:project, service:service}, status: :ok
+        # else
+        #   render json: { error: "Not authorized" }, status: :unauthorized
+        # end
       end
     
       

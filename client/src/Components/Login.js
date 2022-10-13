@@ -37,19 +37,19 @@ const Login = () => {
                 body: JSON.stringify(objectTosend)
             })
             .then((rawData) => {
-                rawData.json()
-
+                if (rawData.ok) {
+                    rawData.json().then((data) => {
+                    //   setUserProfile(data);
+                      console.log(data);
+                    })
+                  }
             })
-            .then((response) => {
-                toast.success('Logged in successfully!')
-                setPassword("")
-                setEmail("")
-                navigate("/dashboard")
-            }).catch((err) => {
-                //  console.log(err.message);
-                toast.error(err)
+           
+            // .catch((err) => {
+            //     //  console.log(err.message);
+            //     toast.error(err)
 
-            });
+            // });
 
     }
     return (

@@ -3,7 +3,6 @@ import './App.css';
 import AboutMe from './Components/AboutMe'
 import Contact from './Components/Clients'
 import Dashboard from './Components/Dashboard'
-import HireMe from './Components/HireMe'
 import Home from './Components/Home'
 import LandingPage from './Components/LandingPage'
 import Projects from './Components/Projects'
@@ -43,8 +42,8 @@ function App() {
   return (
     <div className="App">
       {/* <Preloader /> */}
+      
       <BrowserRouter>
-
         <Routes>
           {/* <Route path="/" element={ <Home/> } /> */}
           <Route path="about" element={<AboutMe />} />
@@ -54,7 +53,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="portfolio" element={<Portfolio />} />
         </Routes>
-      </BrowserRouter>
+    </BrowserRouter>
+
       <div class="sections-wrapper">
 
         {/*      

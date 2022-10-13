@@ -1,6 +1,19 @@
 import React from 'react';
 
-const Projects = () => {
+const Projects = ({projects}) => {
+  console.log(projects)
+  const projectCard = Object.keys(projects).map((projectItem) => (
+   
+
+<div class="single-item col-6 col-lg-4 design"><a class="portfolio-item" href="#item-1">
+<div class="portfolio-wrapper">
+    <img class="img-fluid" alt="Item" src={projects[projectItem].image_url} />
+<div class="item-content">
+<h6 class="content-title">{projects[projectItem].project_title}</h6><a class="content-more" href={projects[projectItem].project_link}>More Info</a>
+</div>
+</div>
+</a></div>
+  ))
     return (
         <div>
         <section class="single-section portfolio-area" id="portfolio-area">
@@ -14,7 +27,6 @@ const Projects = () => {
               </div>
             </div>
             <div class="row">
-               {/* Filter nav */}
               <div class="col-12">
                 <ul class="list-inline filter-control" role="group" aria-label="Filter Control">
                   <li class="list-inline-item tab-active" data-filter="*">All</li>
@@ -26,55 +38,7 @@ const Projects = () => {
             </div>
             
             <div class="portfolio-grid row">
-              {/* <!-- Single item--> */}
-              <div class="single-item col-6 col-lg-4 design"><a class="portfolio-item" href="#item-1">
-                            <div class="portfolio-wrapper">
-                                <img class="img-fluid" alt="Item" src="img/item-1.jpg" />
-                    <div class="item-content">
-                      <h6 class="content-title">Label Tag Mockup</h6><span class="content-more">More Info</span>
-                    </div>
-                  </div>
-                </a></div>
-              {/* <!-- Single item--> */}
-              <div class="single-item col-6 col-lg-4 photos"><a class="portfolio-item" href="#item-2">
-                  <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/item-2.jpg" />
-                    <div class="item-content">
-                      <h6 class="content-title">3D Bag Mockup</h6><span class="content-more">More Info</span>
-                    </div>
-                  </div>
-                </a></div>
-              {/* <!-- Single item--> */}
-              <div class="single-item col-6 col-lg-4 design"><a class="portfolio-item" href="#item-3">
-                  <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/item-3.jpg" />
-                    <div class="item-content">
-                      <h6 class="content-title">Modern Bag Design</h6><span class="content-more">More Info</span>
-                    </div>
-                  </div>
-                </a></div>
-              {/* <!-- Single item--> */}
-              <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="#item-4">
-                  <div class="portfolio-wrapper mb-lg-0"><img class="img-fluid" alt="Item" src="img/item-4.jpg" />
-                    <div class="item-content">
-                      <h6 class="content-title">Coffee Cup Design</h6><span class="content-more">More Info</span>
-                    </div>
-                  </div>
-                </a></div>
-              {/* <!-- Single item--> */}
-              <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="#item-5">
-                  <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="img/item-5.jpg" />
-                    <div class="item-content">
-                      <h6 class="content-title">T-Shirt Design</h6><span class="content-more">More Info</span>
-                    </div>
-                  </div>
-                </a></div>
-              {/* <!-- Single item--> */}
-              <div class="single-item col-6 col-lg-4 photos"><a class="portfolio-item" href="#item-6">
-                  <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="img/item-6.jpg" />
-                    <div class="item-content">
-                      <h6 class="content-title">Packaging Box Mockup</h6><span class="content-more">More Info</span>
-                    </div>
-                  </div>
-                </a></div>
+      {projectCard}
             </div>
           </div>
           {/* <!-- Single lightbox--> */}

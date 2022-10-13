@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get "/me", to: "signups#show"
   delete "/logout", to: "sessions#destroy"
   get "/check_profile_percentage", to: "sessions#show"
-  
   resources :clients, only: [:index, :create, :show]
   resources :users ,only: [:index, :create ,:show]
   
