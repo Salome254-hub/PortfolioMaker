@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 const Services = () => {
+  
     return (
         <div>
               <section class="single-section alt-bg services-area" id="services-area">

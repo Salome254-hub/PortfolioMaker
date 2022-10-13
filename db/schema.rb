@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_130415) do
     t.integer "phone_number"
     t.string "linkedin_link"
     t.string "github_link"
-    t.integer "sign_up", null: false
+    t.integer "signup_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,10 +1,129 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Message from '../Images/messages.svg';
 import Visitors from '../Images/webvisitors.svg';
 import Profile_ from '../Images/profile.svg';
-
+import toast, { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from "react-router-dom"
 
 const Profile = () => {
+    //STATES
+    const [profile, setProfile] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        age: null,
+        location: "",
+        profile_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/512px-Circle-icons-profile.svg.png?20160314153816",
+        title: "",
+        description: "",
+        phone_number: "",
+        linkedin_link: "",
+        github_link: "",
+        signup_id: 1,
+    });
+
+    //HANDLING INPUTS
+    function handleChange(e) {
+        const key = e.target.id;
+        setProfile({ ...profile, [key]: e.target.value });
+    }
+
+    const handleProfile = (event) => {
+        event.preventDefault();
+        fetch("/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                first_name: profile.first_name,
+                last_name: profile.last_name,
+                email: profile.email,
+                age: profile.age,
+                location: profile.location,
+                profile_url: profile.profile_url,
+                title: profile.title,
+                description: profile.description,
+                phone_number: profile.phone_number,
+                linkedin_link: profile.linkedin_link,
+                github_link: profile.github_link,
+                signup_id: profile.signup_id,
+
+            }),
+        })
+            .then((res) => res.json())
+            .then((response) => {
+                setProfile({
+                    ...profile,
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    age: null,
+                    location: "",
+                    profile_url: "",
+                    title: "",
+                    description: "",
+                    phone_number: "",
+                    linkedin_link: "",
+                    github_link: "",
+                    signup_id: "",
+                });
+
+                // console.log(response);
+                // toast.success('Submitted successfully!')
+
+            }).error((error) => {
+                toast.error('Failed to submit')
+
+            })
+
+
+
+    }
+
+
+    return (
+        <div>
+            <Toaster />
+            {/* //PROFILE */}
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="level1">
+                        <h6 className="text-white">User Details</h6>
+                        <h6 className=" red_text text-white">Step 1</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form class="contact-form" id="contact-form" onSubmit={handleProfile} >
+                        <div class="row">
+                            <div class="col-12 col-md-6 form-group"><input id="first_name" class="form-control" type="text" placeholder="First name" value={profile.first_name} onChange={handleChange} required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="last_name" input class="form-control" type="text" placeholder="Last name" value={profile.last_name} onChange={handleChange} required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="phone_number" class="form-control" type="text" placeholder="Phone number" value={profile.phone_number} onChange={handleChange} required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="email" class="form-control" type="email" value={profile.email} onChange={handleChange} placeholder="Email" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="age" class="form-control" type="number" value={profile.age} onChange={handleChange} placeholder="Age" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="location" class="form-control" type="text" value={profile.location} onChange={handleChange} placeholder="Location" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="profile_url" class="form-control" type="text" value={profile.profile_url} onChange={handleChange} placeholder="Profile pic url" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="title" class="form-control" type="text" value={profile.title} onChange={handleChange} placeholder="Your title" required="true" /></div>
+                            <div class="col-12 col-md-12 form-group"><textarea id="description" class="form-control" type="text" value={profile.description} onChange={handleChange} placeholder="Brief description about your profession." required="true" ></textarea></div>
+                            <div class="col-12 col-md-6 form-group"><input id="github_link" class="form-control" type="text" value={profile.github_link} onChange={handleChange} placeholder="Github link" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="linkedin_link" class="form-control" type="text" value={profile.linkedin_link} onChange={handleChange} placeholder="Linkedin link" /></div>
+
+                            <div class="col-12 form-submit"><button class="btn button-main button-scheme" type="submit">Submit/Next step</button>
+                                <p class="contact-feedback"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+const Copy = () => {
     return (
         <div>
 
@@ -20,20 +139,19 @@ const Profile = () => {
             </div>
             <div class="row">
                 <div class="col-12">
-                    <form class="contact-form" id="contact-form" action="http://likeabawz.dk/exill/demo/codex/template/php/contact.php">
+                    <form class="contact-form" id="contact-form" >
                         <div class="row">
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="First name" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Second name" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Phone number" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group">
+                                <input class="form-control" type="text" placeholder="First name" required="true" />
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">Copy Link</span>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="email" placeholder="Email" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="number" placeholder="Age" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Location" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Profile pic url" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Your title" required="true" /></div>
-                            <div class="col-12 col-md-12 form-group"><textarea class="form-control" type="text" placeholder="Brief description about your profession." required="true" ></textarea></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Github link" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="email" placeholder="Linkedin link" /></div>
+                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Second name" required="true" /></div>
 
                             <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Submit/Next step</button>
                                 <p class="contact-feedback"></p>
@@ -46,10 +164,52 @@ const Profile = () => {
 
     )
 }
-
-
 const Services = () => {
+    const [service, setService] = useState({
+        service_title: "",
+        description: "",
+        user_id: 1,
+    });
 
+    const handleService = (event) => {
+        event.preventDefault();
+        fetch("/services", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                service_title: service.service_title,
+                description: service.description,
+                user_id: service.user_id
+
+            }),
+        })
+            .then((res) => res.json())
+            .then((response) => {
+                setService({
+                    ...service,
+                    service_title: "",
+                    description: "",
+                    user_id: 1
+                });
+
+                // console.log(response);
+                // toast.success('Submitted successfully!')
+
+            }).error((error) => {
+                toast.error('Failed to submit')
+
+            })
+
+
+
+    }
+
+    function handleChange(e) {
+        const key = e.target.id;
+        setService({ ...service, [key]: e.target.value });
+    }
     return (
         <div>
             {/* //PROFILE */}
@@ -63,11 +223,11 @@ const Services = () => {
             </div>
             <div class="row">
                 <div class="col-12">
-                    <form class="contact-form" id="contact-form" action="http://likeabawz.dk/exill/demo/codex/template/php/contact.php">
+                    <form class="contact-form" id="contact-form" onSubmit={handleService}>
                         <div class="row">
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Service type" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Description" required="true" /></div>
-                            <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Submit/Next step</button>
+                            <div class="col-12 col-md-6 form-group"><input id="service_title" class="form-control" type="text" onChange={handleChange} value={service.service_title} placeholder="Service type" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="description" class="form-control" type="text" onChange={handleChange} placeholder="Description" value={service.description} required="true" /></div>
+                            <div class="col-12 form-submit"><button class="btn button-main button-scheme" type="submit">Submit/Next step</button>
                                 <p class="contact-feedback"></p>
                             </div>
                         </div>
@@ -78,122 +238,185 @@ const Services = () => {
         </div>)
 }
 
-     {/* //PROFILE */}
+{/* //PROFILE */ }
 
-const Projects=()=>{
-return(
-    <div>
-         <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="level2">
-                                <h6 className="text-white">Projects</h6>
-                                <h6 className=" red_text text-white">Step 2</h6>
+const Projects = () => {
+    const [project, setProject] = useState({
+        project_title: "",
+        project_link: "",
+        image_url:"",
+    });
+
+    const handleProject = (event) => {
+        event.preventDefault();
+        fetch("/projects", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               project_title: project.project_title,
+               project_link:project.project_link,
+               image_url: project.image_url,
+               user_id:1
+
+            }),
+        })
+            .then((res) => res.json())
+            .then((response) => {
+                setProject({
+                    ...project,
+                    project_title: "",
+                    project_link: "",
+                    image_url: ""
+                });
+
+                // console.log(response);
+                toast.success('Submitted successfully!')
+
+            }).error((error) => {
+                toast.error('Failed to submit')
+
+            })
+
+
+
+    }
+
+    function handleChange(e) {
+        const key = e.target.id;
+        setProject({ ...project, [key]: e.target.value });
+    }
+    return (
+        <div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="level2">
+                        <h6 className="text-white">Projects</h6>
+                        <h6 className=" red_text text-white">Step 2</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form class="contact-form" id="contact-form" onSubmit={handleProject}>
+                        <div class="row">
+                            <div class="col-12 col-md-6 form-group"><input id="project_title" valu={project.project_title} class="form-control" type="text" onChange={handleChange} placeholder="Title" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="project_link" value={project.project_link} class="form-control" type="text" onChange={handleChange} placeholder="Description" required="true" /></div>
+
+                            <div class="col-12 col-md-6 form-group"><input id="image_url" value={project.image_url} class="form-control" type="text" onChange={handleChange} placeholder="Image URL" required="true" /><img style={{ height: "40px", width: "40px" }} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" /></div>
+
+
+                            <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Submit/Next step</button>
+                                <p class="contact-feedback"></p>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <form class="contact-form" id="contact-form" action="http://likeabawz.dk/exill/demo/codex/template/php/contact.php">
-                                <div class="row">
-                                    <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Title" required="true" /></div>
-                                    <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Description" required="true" /></div>
-
-                                    <div class="col-12 col-md-6 form-group"><input class="form-control" type="text" placeholder="Image URL" required="true" /><img style={{ height: "40px", width: "40px" }} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" /></div>
-
-
-                                    <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Submit/Next step</button>
-                                        <p class="contact-feedback"></p>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-    </div>
-)
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
 
 }
+
+
+
 const Dashboard = () => {
 
+    
     //HIDDING AND SHOWING FORMS
-    const [usersHide, setUsersHide] = useState(false)
+    const [usersHide, setUsersHide] = useState(true)
     const [projectHide, setProjectHide] = useState(false)
     const [servicesHide, setServiceHide] = useState(false)
 
+    //CHECK PROGRESS
+    useEffect(() =>{
+    fetch("/check_profile_percentage").then((data) =>{
+data.json()
+    }).then((data1) =>{
 
+        console.log(data1)
+    })
 
-
-
-
-
-
+    },[])
     return (
-        <div>
-            <div>
-                <nav className="navbar d-md-block d-lg-none fixed-top mobile-navbar"><button className="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="nav-btn">Menu</span></button>
-                    <div className="collapse navbar-collapse order-1" id="mobileNavbarSupportedContent">
-                        <ul className="navbar-nav mr-auto"></ul>
-                    </div>
-                </nav>
-                <nav className="sidebar" data-simplebar>
-                    <div className="sidebar-header"><a href="#home" data-scroll><img style={{ height: "65px", width: "65px" }} className="img-fluid sidebar-avatar" src="https://www.pd.co.ke/wp-content/uploads/2022/06/PG-1-Wajackoyah%E2%88%9A-1200x900.jpg" alt="Profile avatar" /></a><span className="sidebar-name">Brian Koskei</span>
-                        {/* <p className="sidebar-status">Available for work</p> */}
-                    </div>
-                    <div className="sidebar-menu">
-                        <ul className="list-unstyled list-menu">
-                            <li><a className="nav-link" href="#home-area" data-scroll>View Profile</a></li>
-
-                            <li><a className="nav-link" href="#home-area" data-scroll>Modify Profile</a></li>
-                            <li><a className="nav-link " href="#about-area" data-scroll>Log out</a></li>
-
-                        </ul>
-                    </div>
-                </nav>
-                <div className="sections-wrapper">
+        <div class="main-wrapper">
+            <Toaster />
+            <nav className="navbar d-md-block d-lg-none fixed-top mobile-navbar"><button className="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="nav-btn">Menu</span></button>
+                <div className="collapse navbar-collapse order-1" id="mobileNavbarSupportedContent">
+                    <ul className="navbar-nav mr-auto"></ul>
                 </div>
-            </div>
-            <section class="single-section contact-area alt-bg" id="contact-area">
-                <div class="container text-left">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="section-heading">
-                                <h2 class="section-title">Dashboard</h2>
-                                <h6 class=" red_text">Feel free to contact me anytime</h6>
+            </nav>
+            <nav className="sidebar" data-simplebar>
+                <div className="sidebar-header"><a href="#home" data-scroll><img style={{ height: "65px", width: "65px" }} className="img-fluid sidebar-avatar" src="https://www.pd.co.ke/wp-content/uploads/2022/06/PG-1-Wajackoyah%E2%88%9A-1200x900.jpg" alt="Profile avatar" /></a><span className="sidebar-name">Brian Koskei</span>
+                    {/* <p className="sidebar-status">Available for work</p> */}
+                </div>
+                <div className="sidebar-menu">
+                    <ul className="list-unstyled list-menu">
+                        <Link className="nav-link m-3" to="/portfolio">View Profile</Link>
+                        <Link className="nav-link m-3" to="/portfolio">Copy Profile Link</Link>
+                        <Link className="nav-link m-3" to="/portfolio">Log out</Link>
+                        <li><a className="nav-link" href="#home-area" data-scroll>Modify Profile</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+            <div class="sections-wrapper">
+
+                <section class="single-section contact-area alt-bg" id="contact-area">
+                    <div class="container text-left">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="section-heading">
+                                    <h2 class="section-title">Dashboard</h2>
+                                    <h6 class=" red_text">Feel free to contact me anytime</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-lg-6 col-mg-6 col-sm-12">
-                            <div class="contact-form mb-3" >
-                                <div class="row">
-                                    <div className='col-3 col-md-3 col-sm-6 col-lg-3 text-left red_line'>
-                                        <img src={Profile_} class="d_board"></img>
-                                    </div>
-                                    <div className='col-9 col-md-9 col-sm-6 col-lg-9  text-left'>
-                                        <h6>Profile progress</h6>
+                        <div class="row">
+                            <div class="col-12 col-lg-6 col-mg-6 col-sm-12">
+                                <div class="contact-form mb-3" >
+                                    <div class="row">
+                                        <div className='col-3 col-md-3 col-sm-6 col-lg-3 text-left red_line'>
+                                            <img src={Profile_} class="d_board"></img>
+                                        </div>
+                                        <div className='col-9 col-md-9 col-sm-6 col-lg-9  text-left'>
+                                            <h6>Profile progress</h6>
 
-                                        <h1>16%</h1>
+                                            <h1>16%</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 col-mg-6 col-sm-12">
+                                <div class="contact-form mb-3" >
+                                    <div class="row">
+                                        <div className='col-3 col-md-3 col-sm-6 col-lg-3 text-left red_line'>
+                                            <img src={Message} class="d_board"></img>
+                                        </div>
+                                        <div className='col-9 col-md-9 col-sm-6 col-lg-9  text-left'>
+                                            <h4>Messages</h4>
+                                            <h1>40</h1>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 col-mg-6 col-sm-12">
-                            <div class="contact-form mb-3" >
-                                <div class="row">
-                                    <div className='col-3 col-md-3 col-sm-6 col-lg-3 text-left red_line'>
-                                        <img src={Message} class="d_board"></img>
-                                    </div>
-                                    <div className='col-9 col-md-9 col-sm-6 col-lg-9  text-left'>
-                                        <h4>Messages</h4>
-                                        <h1>40</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+                        { usersHide  && <Profile /> }
+
+                        { servicesHide == true &&   <Services /> }
+
+                        { projectHide == true &&    <Projects /> }
+
+                        
+                        
+                      
+                      
                     </div>
-                    <Profile />
-                    <Services/>
-                </div>
-            </section >
+                </section >
+            </div >
         </div >
     );
 }

@@ -1,8 +1,7 @@
 class SignupsController < ApplicationController
+    # before_action :create
     
-    
-    
-    #create a user signup action 
+  #create a user signup action 
     def create
         signup = Signup.create(signup_params);
         if signup.valid?
@@ -21,6 +20,7 @@ class SignupsController < ApplicationController
         end
       end
     
+      
     private
     def signup_params
         params.permit(:email, :password, :password_confirmation)

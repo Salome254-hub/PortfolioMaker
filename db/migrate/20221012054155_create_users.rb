@@ -12,8 +12,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.integer :phone_number
       t.string :linkedin_link
       t.string :github_link
-      t.integer :sign_up, null: false
-
+      t.integer :signup_id, null: false
       t.timestamps
     end
   end

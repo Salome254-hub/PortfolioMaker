@@ -32,4 +32,6 @@ class ProjectsController < ApplicationController
     end
     def project_params 
      params.permit(:project_title, :project_link, :image_url, :user_id)
+    end
+    
 end
