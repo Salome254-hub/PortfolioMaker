@@ -13,26 +13,54 @@ import Footer from './Components/Footer'
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
 import Preloader from './Components/Preloader';
-
-
+import React,{useEffect,useState} from 'react';
+import { Routes, Route ,BrowserRouter} from "react-router-dom"
 
 function App() {
+  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((check) =>{
+          setUser(check);
+        console.log(check);
+        } )
+      }
+    });
+  }, []);
+
+  if (user) {
+
+
+  } else {
+   
+
+
+  }
   return (
     <div className="App">
       {/* <Preloader /> */}
-      <Sidebar/>
+      <BrowserRouter>
+      <Routes>
+  {/* <Route path="/" element={ <Home/> } /> */}
+  <Route path="about" element={ <AboutMe/> } />
+  <Route path="dashboard" element={ <Dashboard/> } />
+  <Route path="login" element={ <Login/>} />
+  <Route path="signup" element={<SignUp/>} />
+  <Route path="/" element={<LandingPage/> } />
+
+</Routes>
+</BrowserRouter>
       <div class="sections-wrapper">
-      <Home />
-      <AboutMe/>
-      <Services/>
+      
+{/*      
       <Dashboard/>
-      <HireMe/>
+     
       <Projects/>
       <Contact/> 
-        <SignUp/>
-        <Login/>
-<LandingPage/>
-<Footer/>
+<LandingPage/> */}
 
       
 
