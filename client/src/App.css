@@ -105,11 +105,35 @@
   border-radius: 7px;
 }
 .menu_{
-  border-radius: 20px;
+  border-radius: 70px;
   padding:7px;
   background-color: #f5f5f5;
   margin: 10px;
   height: 40px;
   width: 100%;
   color: black !important;
+}
+.orange{
+  background-color: #dc3545;
+  
+}
+.center_everything{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.outer_box{
+  width: 100%;
+  /* border-radius: 80px; */
+  /* height: 130px; */
+  background-color: white;
+  border: 1px solid #DC3545;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+.logosm{
+  height: 120px;
+  width: 120px;
 }

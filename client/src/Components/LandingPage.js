@@ -17,10 +17,15 @@ const LandingPage = () => {
                 </div>
                 <div className="sidebar-menu">
                     <ul className="list-unstyled list-menu">
-                        
-                        <Link className="m-2 menu_" to="login">Log in</Link>
-                        <Link className="m-2 menu_" to="signup">Sign Up</Link>
-                        <Link className="m-2 menu_" to="/">Sample Templates</Link>
+                       <li> <Link className="m-2 menu_" to="login">Log in</Link></li> 
+                       <li>
+                       <Link className="m-2 menu_" to="signup">Sign Up</Link>
+                        </li> 
+                       <li>
+                       <Link className="m-2 menu_ orange" to="/">Sample Templates</Link>
+
+                        </li> 
+                       
 
 
 

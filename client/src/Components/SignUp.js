@@ -82,9 +82,13 @@ const SignUp = () => {
         <div className="sidebar-menu">
           <ul className="list-unstyled list-menu">
 
-            <Link className="nav-link m-3" to="/login">Log in</Link>
-            <Link className="nav-link m-3" to="/signup">Sign Up</Link>
-            <Link className="nav-link m-3" to="/">Sample Templates</Link>
+          <li> <Link className="m-2 menu_" to="/login">Log in</Link></li> 
+                       <li>
+                       <Link className="m-2 menu_ orange" to="/signup">Sign Up</Link>
+                        </li> 
+                       <li>
+                       <Link className="m-2 menu_ " to="/">Sample Templates</Link>
+</li>
             <li><a className="nav-link " href="#about-area" data-scroll><small>© PortMaker 2022</small></a></li>
 
           </ul>

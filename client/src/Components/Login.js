@@ -40,11 +40,17 @@ const Login = () => {
                 if (rawData.ok) {
                     rawData.json().then((data) => {
                         //   setUserProfile(data);
+                        console.log(data)
                         toast.success("Loged in successfully!")
                         navigate("/dashboard")
                         // console.log(data);
-                        
 
+
+                    }).error((error) => {
+                        setEmail("")
+                        setPassword("")
+                        toast.error('Wrong email or password')
+        
                     })
                 }
             })
@@ -65,12 +71,17 @@ const Login = () => {
                 </div>
                 <div className="sidebar-menu">
                     <ul className="list-unstyled list-menu">
-                        <Link className="nav-link m-3" to="/">Home</Link>
+                       
 
-                        <Link className="nav-link m-3" to="/login">Log in</Link>
-                        <Link className="nav-link m-3" to="/signup">Sign Up</Link>
-                        <Link className="nav-link m-3" to="/">Sample Templates</Link>
 
+                      
+                        <li> <Link className="m-2 menu_ orange" to="/login">Log in</Link></li>
+                        <li>
+                            <Link className="m-2 menu_" to="/signup">Sign Up</Link>
+                        </li>
+                        <li>
+                            <Link className="m-2 menu_ " to="/">Sample Templates</Link>
+                        </li>
 
 
 

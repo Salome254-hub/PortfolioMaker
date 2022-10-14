@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Message from '../Images/messages.svg';
 import Visitors from '../Images/webvisitors.svg';
 import Profile_ from '../Images/profile.svg';
+import Ready from '../Images/ready.gif'
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from "react-router-dom"
 
@@ -369,8 +370,8 @@ const Dashboard = () => {
                         console.log(data.status);
 
                     }).catch((error) => {
-                        toast.error("Please log in first");
-                        navigate("/login")
+                        // toast.error("Please log in first");
+                        // navigate("/login")
                     });
                 }
             })
@@ -381,25 +382,27 @@ const Dashboard = () => {
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
-
                         setPercentage(data.count)
 
-                        if (data.count.to_i <= 33) {
+                        if (data.count <= 33) {
                             setUsersHide(true)
                             setProjectHide(false)
                             setServiceHide(false)
                         }
-                        else if (data.count.to_i <= 66) {
+                        else if (data.count <= 66) {
                             setUsersHide(false)
                             setProjectHide(true)
                             setServiceHide(false)
+
                         }
-                        else if (data.count.to_i <= 100) {
+                        else if (data.count <= 100) {
                             setUsersHide(false)
                             setProjectHide(false)
                             setServiceHide(true)
+
                         }
                         else {
+
                             // alert("Generate profile")
                         }
 
@@ -426,6 +429,41 @@ const Dashboard = () => {
                 toast.error("Please log in first");
                 navigate("/login")
             });
+    }
+
+    const CopyLink = () => {
+        return (
+            <div class="row">
+                <div class="col-md-12  col-sm-12 col-lg-12 center_everything">
+                    <div class="outer_box">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-2  col-sm-12 ">
+                                <img src={Ready} class="logosm" />
+                            </div>
+
+                            <div class="col-md-3 col-lg-10  col-sm-12 text-left">
+                                <div class="row pt-2"><h4>Profile complete!</h4></div>
+                                <div class="row"><h6>You have earned your free portfolio.Copy the link bellow and share.</h6></div>
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-8  col-sm-12 ">
+
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text" id="basic-addon2">Copy Profile link</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        )
     }
     return (
         <div class="main-wrapper">
@@ -500,6 +538,9 @@ const Dashboard = () => {
                         {servicesHide && <Services user_id={userId} />}
 
                         {projectHide && <Projects user_id={userId} />}
+                        {projectHide && <CopyLink />}
+
+                        <CopyLink />
 
 
 
