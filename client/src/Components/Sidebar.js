@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({sidebar}) => {
     return (
@@ -14,15 +15,17 @@ const Sidebar = ({sidebar}) => {
         </div>
         <div className="sidebar-menu">
           <ul className="list-unstyled list-menu">
-            <li><a className="nav-link" href="#home-area" data-scroll>Home</a></li>
-            <li><a className="nav-link" href="#about-area" data-scroll>About</a></li>
-            <li><a className="nav-link" href="#services-area" data-scroll>Services</a></li>
-            <li><a className="nav-link" href="#portfolio-area" data-scroll>Projects</a></li>
-            <li><a className="nav-link" href="#hire-area" data-scroll>Hire me</a></li>
+            <li><a className="m-2 menu_" href="#home-area" data-scroll>Home</a></li>
+            <li><a className="m-2 menu_" href="#about-area" data-scroll>About</a></li>
+            <li><a className="m-2 menu_" href="#services-area" data-scroll>Services</a></li>
+            <li><a className="m-2 menu_" href="#portfolio-area" data-scroll>Projects</a></li>
+            <li><a className="m-2 menu_" href="#hire-area" data-scroll>Hire me</a></li>
 
-            <li><a className="nav-link" href="#testimonials-area" data-scroll>Clients</a></li>
+            <li><a className="m-2 menu_" href="#testimonials-area" data-scroll>Clients</a></li>
 
-            <li><a className="nav-link" href="#contact-area" data-scroll>Contact</a></li>
+            <li><a className="m-2 menu_" href="#contact-area" data-scroll>Contact</a></li>
+            <li><Link className="m-2 menu_ orange"  to="/login" data-scroll>Create More</Link></li>
+
           </ul>
         </div>
       </nav>

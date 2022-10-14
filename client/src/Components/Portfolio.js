@@ -25,7 +25,8 @@ const Portfolio = () => {
                 rawData.json().then((data) => {
                   setUserProfile(data.user);
                   setServicesData(data.service);
-                  setProjectsData(data.service)
+                  setProjectsData(data.project)
+                console.log(data)
                 })
               }
     
@@ -40,11 +41,13 @@ const Portfolio = () => {
                     <Home homeData={userProfile}/>
                     <About about={userProfile}/>
                     <Services services={servicesData} />
+                    <HireMe className="mt-4"/>
+
         
                     <Projects projects={projectsData} />
-                    <HireMe/>
                     <Client />
-                    <Footer profile={userProfile}/>
+                    <Footer footer={userProfile}/>
+                    
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Message from '../Images/messages.svg';
 import Visitors from '../Images/webvisitors.svg';
 import Profile_ from '../Images/profile.svg';
@@ -164,12 +164,13 @@ const Copy = () => {
 
     )
 }
-const Services = () => {
+const Services = ({ user_id }) => {
     const [service, setService] = useState({
         service_title: "",
         description: "",
         user_id: 1,
     });
+
 
     const handleService = (event) => {
         event.preventDefault();
@@ -181,7 +182,7 @@ const Services = () => {
             body: JSON.stringify({
                 service_title: service.service_title,
                 description: service.description,
-                user_id: service.user_id
+                user_id: user_id
 
             }),
         })
@@ -191,7 +192,7 @@ const Services = () => {
                     ...service,
                     service_title: "",
                     description: "",
-                    user_id: 1
+                    user_id: localStorage.getItem("user_id")
                 });
 
                 // console.log(response);
@@ -240,11 +241,11 @@ const Services = () => {
 
 {/* //PROFILE */ }
 
-const Projects = () => {
+const Projects = ({ user_id }) => {
     const [project, setProject] = useState({
         project_title: "",
         project_link: "",
-        image_url:"",
+        image_url: "",
     });
 
     const handleProject = (event) => {
@@ -255,10 +256,10 @@ const Projects = () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               project_title: project.project_title,
-               project_link:project.project_link,
-               image_url: project.image_url,
-               user_id:1
+                project_title: project.project_title,
+                project_link: project.project_link,
+                image_url: project.image_url,
+                user_id: user_id
 
             }),
         })
@@ -322,23 +323,110 @@ const Projects = () => {
 
 
 const Dashboard = () => {
-
-    
     //HIDDING AND SHOWING FORMS
-    const [usersHide, setUsersHide] = useState(true)
+    const [usersHide, setUsersHide] = useState(false)
     const [projectHide, setProjectHide] = useState(false)
     const [servicesHide, setServiceHide] = useState(false)
+    const [clients, setClients] = useState([]);
+    const [userId, setUserId] = useState("")
+    const [users, setUsers] = useState([])
+    const [triggerLogout, setTriggerLogout] = useState(false);
+    const [percentage, setPercentage] = useState("0")
+    const navigate = useNavigate()
+
+
+
+
 
     //CHECK PROGRESS
-    useEffect(() =>{
-    fetch("/check_profile_percentage").then((data) =>{
-data.json()
-    }).then((data1) =>{
+    useEffect(() => {
+        fetch("/clients")
+            .then((data) => {
+                if (data.ok) {
+                    data.json().then((data) => {
+                        //   setUserProfile(data);
+                        setClients(data)
+                        console.log(data);
+                    })
+                }
+            });
 
-        console.log(data1)
-    })
 
-    },[])
+        //Check log in status
+        fetch("/get_user")
+            .then((data) => {
+                if (data.ok) {
+                    data.json().then((data) => {
+                        //   setUserProfile(data);
+                        // setClients(data)
+                        if (data.user.id == null) {
+                            toast.error("Please log in first");
+                            navigate("/login")
+                        }
+                        console.log(data.user.id)
+                        setUserId(data.user.id)
+                        setUsers(data.user)
+                        console.log(data.status);
+
+                    }).catch((error) => {
+                        toast.error("Please log in first");
+                        navigate("/login")
+                    });
+                }
+            })
+
+
+        //Check profile progress
+        fetch("/check_progress")
+            .then((data) => {
+                if (data.ok) {
+                    data.json().then((data) => {
+
+                        setPercentage(data.count)
+
+                        if (data.count.to_i <= 33) {
+                            setUsersHide(true)
+                            setProjectHide(false)
+                            setServiceHide(false)
+                        }
+                        else if (data.count.to_i <= 66) {
+                            setUsersHide(false)
+                            setProjectHide(true)
+                            setServiceHide(false)
+                        }
+                        else if (data.count.to_i <= 100) {
+                            setUsersHide(false)
+                            setProjectHide(false)
+                            setServiceHide(true)
+                        }
+                        else {
+                            // alert("Generate profile")
+                        }
+
+                    })
+                    // .catch((error) => {
+                    //     toast.error("Unable to get profile information,please reload.");
+
+                    // });
+                }
+            })
+    }, [triggerLogout])
+
+    const logOut = () => {
+        fetch("/log_out",
+            { method: 'DELETE' })
+            .then((data) => {
+
+
+                toast.success("Loged out successfully!");
+                navigate("/login")
+
+
+            }).catch((error) => {
+                toast.error("Please log in first");
+                navigate("/login")
+            });
+    }
     return (
         <div class="main-wrapper">
             <Toaster />
@@ -348,15 +436,17 @@ data.json()
                 </div>
             </nav>
             <nav className="sidebar" data-simplebar>
-                <div className="sidebar-header"><a href="#home" data-scroll><img style={{ height: "65px", width: "65px" }} className="img-fluid sidebar-avatar" src="https://www.pd.co.ke/wp-content/uploads/2022/06/PG-1-Wajackoyah%E2%88%9A-1200x900.jpg" alt="Profile avatar" /></a><span className="sidebar-name">Brian Koskei</span>
+                <div className="sidebar-header"><a href="#home" data-scroll><img style={{ height: "65px", width: "65px" }} className="img-fluid sidebar-avatar" src={users.profile_url} alt="Profile avatar" /></a><span className="sidebar-name">{users.first_name},&nbsp; {users.last_name}</span>
                     {/* <p className="sidebar-status">Available for work</p> */}
                 </div>
                 <div className="sidebar-menu">
                     <ul className="list-unstyled list-menu">
-                        <Link className="nav-link m-3" to="/portfolio">View Profile</Link>
-                        <Link className="nav-link m-3" to="/portfolio">Copy Profile Link</Link>
-                        <Link className="nav-link m-3" to="/portfolio">Log out</Link>
-                        <li><a className="nav-link" href="#home-area" data-scroll>Modify Profile</a></li>
+                        <li> <Link className=" m-3 menu_" to="/portfolio">View Profile</Link></li>
+                        <li><Link className=" m-3 menu_" to="/portfolio">Copy Profile Link</Link></li>
+                        <li><Link className=" m-3 menu_" onClick={logOut} to="/portfolio">Modify Profile</Link></li>
+                        <li> <Link className=" m-3 menu_" onClick={logOut}>Log out</Link></li>
+
+                        <li><a className="nav-link" href="#home-area" data-scroll></a></li>
 
                     </ul>
                 </div>
@@ -383,7 +473,7 @@ data.json()
                                         <div className='col-9 col-md-9 col-sm-6 col-lg-9  text-left'>
                                             <h6>Profile progress</h6>
 
-                                            <h1>16%</h1>
+                                            <h1>{percentage}%</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -396,7 +486,8 @@ data.json()
                                         </div>
                                         <div className='col-9 col-md-9 col-sm-6 col-lg-9  text-left'>
                                             <h4>Messages</h4>
-                                            <h1>40</h1>
+                                            <h1>{clients.count_messages
+                                            }</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -404,21 +495,20 @@ data.json()
                         </div>
 
 
-                        { usersHide  && <Profile /> }
+                        {usersHide && <Profile user_id={userId} />}
 
-                        { servicesHide == true &&   <Services /> }
+                        {servicesHide && <Services user_id={userId} />}
 
-                        { projectHide == true &&    <Projects /> }
+                        {projectHide && <Projects user_id={userId} />}
 
-                        
-                        
-                      
-                      
+
+
+
+
                     </div>
                 </section >
             </div >
         </div >
     );
 }
-
 export default Dashboard;

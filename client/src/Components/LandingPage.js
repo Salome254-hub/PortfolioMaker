@@ -18,9 +18,9 @@ const LandingPage = () => {
                 <div className="sidebar-menu">
                     <ul className="list-unstyled list-menu">
                         
-                        <Link className="nav-link m-3" to="login">Log in</Link>
-                        <Link className="nav-link m-3" to="signup">Sign Up</Link>
-                        <Link className="nav-link m-3" to="/">Sample Templates</Link>
+                        <Link className="m-2 menu_" to="login">Log in</Link>
+                        <Link className="m-2 menu_" to="signup">Sign Up</Link>
+                        <Link className="m-2 menu_" to="/">Sample Templates</Link>
 
 
 

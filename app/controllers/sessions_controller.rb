@@ -15,25 +15,5 @@ class SessionsController < ApplicationController
         head :no_content
         end
 
-      # def show
-      #   count=0;
-      #   user=User.find_by(signup_id: session[:signup_id])
-      #   if user
-      #     count=count+33
-      #   end
-      #    service= Service.find_by(user_id: user.id)
-      #    if service
-      #     count=count+33
-      #    end
-      #    project=Project.find_by(user_id: user.id)
-      #    if project
-      #     count=count+34
-       
-      #    end
      
-    
-  
-      #   render json:{count:count}, status: :ok
-
-      # end
     end

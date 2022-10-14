@@ -104,3 +104,12 @@
 .button-main{
   border-radius: 7px;
 }
+.menu_{
+  border-radius: 20px;
+  padding:7px;
+  background-color: #f5f5f5;
+  margin: 10px;
+  height: 40px;
+  width: 100%;
+  color: black !important;
+}

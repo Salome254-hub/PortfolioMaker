@@ -16,6 +16,30 @@ class UsersController < ApplicationController
     render json: user, include: :projects, status: :ok
     end
 
+    def get_user
+        user=User.find_by(signup_id: session[:signup_id])
+        render json:{user: user}, status: :ok
+    end
+
+    def check_progress
+        count=0;
+        user=User.find_by(signup_id: session[:signup_id])
+        if user
+          count=count+33
+          service= Service.find_by(user_id: user.id)
+          if service
+           count=count+33
+          end
+          project=Project.find_by(user_id: user.id)
+          if project
+           count=count+34
+          end
+        render json:{count:count}, status: :ok
+
+        else
+            render json:{count:0}, status: :ok
+        end
+        end
     private 
     
     def user_params
@@ -25,4 +49,8 @@ class UsersController < ApplicationController
     def render_not_found_response
      render json: { error: "User not found"}, status: :not_found
     end
+
+  
+
+
     end

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginPic from '../Images/login.gif'
 import toast, { Toaster } from 'react-hot-toast';
-import { Link ,useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import Logo from '../Images/logo.png'
 // import Logo from '../Images/logo.png';
@@ -39,22 +39,26 @@ const Login = () => {
             .then((rawData) => {
                 if (rawData.ok) {
                     rawData.json().then((data) => {
-                    //   setUserProfile(data);
-                      console.log(data);
-                    })
-                  }
-            })
-           
-            // .catch((err) => {
-            //     //  console.log(err.message);
-            //     toast.error(err)
+                        //   setUserProfile(data);
+                        toast.success("Loged in successfully!")
+                        navigate("/dashboard")
+                        // console.log(data);
+                        
 
-            // });
+                    })
+                }
+            })
+
+        // .catch((err) => {
+        //     //  console.log(err.message);
+        //     toast.error(err)
+
+        // });
 
     }
     return (
         <div class="main-wrapper">
-<Toaster/>
+            <Toaster />
             <nav className="sidebar" data-simplebar>
                 <div className="sidebar-header"><a href="#home" data-scroll><img src={Logo} style={{ height: "65px", width: "65px", }} className="img-fluid sidebar-avatar no-border" alt="Profile avatar" /></a><span className="sidebar-name">PortMaker</span>
                     {/* <p className="sidebar-status">Available for work</p> */}
@@ -99,8 +103,8 @@ const Login = () => {
                                                 <div class="col-12 col-md-12 form-group pt-4"><input class="form-control" id="contact-name" value={email} onChange={handleEmail} type="email" placeholder=" Email" required="" /></div>
                                                 <div class="col-12 col-md-12 form-group text-left "><input class="form-control mb-3" id="contact-email" value={password} onChange={handlePassword} type="password" placeholder="Password" required="" />
                                                     <button class="btn button-main button-scheme mr-2" type="submit">Log in</button>
-                        <Link className="btn button-main button-scheme mr-2" to="/signup">Create Account</Link>
-                                                
+                                                    <Link className="btn button-main button-scheme mr-2" to="/signup">Create Account</Link>
+
                                                 </div>
                                             </div>
                                         </form>

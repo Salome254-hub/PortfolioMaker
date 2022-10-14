@@ -4,8 +4,8 @@ class ClientsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        client = Client.all
-        render json: client
+        client = Client.all.count
+        render json: {count_messages: client}
     end
 
     def create
