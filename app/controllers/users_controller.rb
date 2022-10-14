@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     def get_user
         user=User.find_by(signup_id: session[:signup_id])
-        render json:{user: user}, status: :ok
+        render json:user, status: :ok
     end
 
     def check_progress

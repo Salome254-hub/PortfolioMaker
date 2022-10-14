@@ -16,7 +16,7 @@ class SignupsController < ApplicationController
         end
     end
     def show
-        signup = Signup.find_by(id: session[:signup_id])
+        signup = Signup.find_by(id: params[:id])
         user=User.find_by(signup_id: signup.id)
         service=Service.where(user_id: user.id)
         project=Project.where(user_id: user.id)

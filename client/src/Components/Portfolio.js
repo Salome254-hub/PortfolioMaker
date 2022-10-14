@@ -20,7 +20,8 @@ const Portfolio = () => {
 
     //FETCH ALL DATA
     useEffect(() => {
-        fetch("/signups/1").then((rawData) => {
+        let user_id=localStorage.getItem('signup_id')
+        fetch(`/signups/${user_id}`).then((rawData) => {
             if (rawData.ok) {
                 rawData.json().then((data) => {
                   setUserProfile(data.user);
