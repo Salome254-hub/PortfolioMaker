@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutMe = () => {
+const AboutMe = ({about}) => {
     return (
         <div>
             <section class="single-section about-area" id="about-area">
@@ -14,29 +14,29 @@ const AboutMe = () => {
               </div>
             </div>
             <div class="row align-items-center">
-              <div class="col-12 col-lg-5 about-img"><img class="img-fluid img-thumbnail" src="img/about-img.jpg" alt="About Picture"/></div>
+              <div class="col-12 col-lg-5 about-img"><img class="img-fluid img-thumbnail" src={about.profile_url} alt="About Picture"/></div>
               <div class="col-12 col-lg-7 about-content">
                 <div class="content-block">
                   <h2 class="content-subtitle">Who am i?</h2>
-                  <h6 class="content-title">I'm Alex Smith, a visual UX/UI Designer and Web Developer</h6>
+                  <h6 class="content-title">I'm {about.first_name} {about.last_name}, a {about.title}</h6>
                   <div class="content-description">
-                    <p>I am a freelancer based in the United Kingdom and i have been building noteworthy UX/UI designs and websites for years, which comply with the latest design trends. I help convert a vision and an idea into meaningful and useful products. Having a sharp eye for product evolution helps me prioritize tasks, iterate fast and deliver faster.</p>
+                    <p>{about.description}</p>
                   </div>
                   <address class="content-info">
                     <div class="row">
                       <div class="col-12 col-md-6 single-info"><span>Name:</span>
-                        <p>Alex Smith</p>
+                        <p>{about.first_name} {about.last_name}</p>
                       </div>
                       <div class="col-12 col-md-6 single-info"><span>Email:</span>
-                        <p><a href="mailto:daniel@example.com">alex@example.com</a></p>
+                        <p><a href="mailto:daniel@example.com">{about.email}</a></p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12 col-md-6 single-info"><span>Age:</span>
-                        <p>21</p>
+                        <p>{about.age}</p>
                       </div>
                       <div class="col-12 col-md-6 single-info"><span>From:</span>
-                        <p>Liverpool, UK</p>
+                        <p>{about.location}</p>
                       </div>
                     </div>
                   </address><a class="btn content-download button-main button-scheme" href="#0" role="button">Download CV</a><a class="btn content-work button-main" data-scroll="" href="#portfolio-area" role="button">My Work</a>
