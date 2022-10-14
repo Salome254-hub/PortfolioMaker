@@ -115,7 +115,7 @@
 }
 .orange{
   background-color: #dc3545;
-  
+  color: white !important;
 }
 .center_everything{
   display: flex;

@@ -6,7 +6,7 @@ import Ready from '../Images/ready.gif'
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from "react-router-dom"
 
-const Profile = () => {
+const Profile = ({ updateState }) => {
     //STATES
     const [profile, setProfile] = useState({
         first_name: "",
@@ -48,7 +48,7 @@ const Profile = () => {
                 phone_number: profile.phone_number,
                 linkedin_link: profile.linkedin_link,
                 github_link: profile.github_link,
-                signup_id: profile.signup_id,
+                signup_id: localStorage.getItem("signup_id"),
 
             }),
         })
@@ -68,8 +68,9 @@ const Profile = () => {
                     linkedin_link: "",
                     github_link: "",
                     signup_id: "",
-                });
 
+                });
+                updateState()
                 // console.log(response);
                 // toast.success('Submitted successfully!')
 
@@ -165,13 +166,12 @@ const Copy = () => {
 
     )
 }
-const Services = ({ user_id }) => {
+const Services = ({ updateState }) => {
     const [service, setService] = useState({
         service_title: "",
         description: "",
-        user_id: 1,
+        user_id: localStorage.getItem('user_id'),
     });
-
 
     const handleService = (event) => {
         event.preventDefault();
@@ -183,7 +183,7 @@ const Services = ({ user_id }) => {
             body: JSON.stringify({
                 service_title: service.service_title,
                 description: service.description,
-                user_id: user_id
+                user_id: localStorage.getItem('user_id')
 
             }),
         })
@@ -195,9 +195,9 @@ const Services = ({ user_id }) => {
                     description: "",
                     user_id: localStorage.getItem("user_id")
                 });
+                updateState()
 
-                // console.log(response);
-                // toast.success('Submitted successfully!')
+                toast.success('Srvice submitted successfully!')
 
             }).error((error) => {
                 toast.error('Failed to submit')
@@ -242,7 +242,7 @@ const Services = ({ user_id }) => {
 
 {/* //PROFILE */ }
 
-const Projects = ({ user_id }) => {
+const Projects = ({ updateState }) => {
     const [project, setProject] = useState({
         project_title: "",
         project_link: "",
@@ -260,7 +260,7 @@ const Projects = ({ user_id }) => {
                 project_title: project.project_title,
                 project_link: project.project_link,
                 image_url: project.image_url,
-                user_id: user_id
+                user_id: localStorage.getItem("user_id")
 
             }),
         })
@@ -274,7 +274,8 @@ const Projects = ({ user_id }) => {
                 });
 
                 // console.log(response);
-                toast.success('Submitted successfully!')
+                toast.success('Project submitted successfully!')
+                updateState()
 
             }).error((error) => {
                 toast.error('Failed to submit')
@@ -304,7 +305,7 @@ const Projects = ({ user_id }) => {
                     <form class="contact-form" id="contact-form" onSubmit={handleProject}>
                         <div class="row">
                             <div class="col-12 col-md-6 form-group"><input id="project_title" valu={project.project_title} class="form-control" type="text" onChange={handleChange} placeholder="Title" required="true" /></div>
-                            <div class="col-12 col-md-6 form-group"><input id="project_link" value={project.project_link} class="form-control" type="text" onChange={handleChange} placeholder="Description" required="true" /></div>
+                            <div class="col-12 col-md-6 form-group"><input id="project_link" value={project.project_link} class="form-control" type="text" onChange={handleChange} placeholder="Project link" required="true" /></div>
 
                             <div class="col-12 col-md-6 form-group"><input id="image_url" value={project.image_url} class="form-control" type="text" onChange={handleChange} placeholder="Image URL" required="true" /><img style={{ height: "40px", width: "40px" }} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" /></div>
 
@@ -328,15 +329,24 @@ const Dashboard = () => {
     const [usersHide, setUsersHide] = useState(false)
     const [projectHide, setProjectHide] = useState(false)
     const [servicesHide, setServiceHide] = useState(false)
+    const [completerHide, setCompleteHide] = useState(false)
     const [clients, setClients] = useState([]);
-    const [userId, setUserId] = useState("")
+    const [userId, setUserId] = useState([])
     const [users, setUsers] = useState([])
     const [triggerLogout, setTriggerLogout] = useState(false);
     const [percentage, setPercentage] = useState("0")
     const navigate = useNavigate()
+    const [waitForChanges, setWaitForChanges] = useState(false);
+    // const [url,setUrl]= useState("")
 
-
-
+    // var dummy = document.createElement('input'),
+    // var url_= window.location.href;
+    // setUrl(url_);
+    // setUrl(window.location.href)
+    //STATTE UPDATER
+    const updateState = () => {
+        setWaitForChanges(!waitForChanges)
+    }
 
 
     //CHECK PROGRESS
@@ -358,21 +368,25 @@ const Dashboard = () => {
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
-                        //   setUserProfile(data);
-                        // setClients(data)
-                        if (data.user.id == null) {
-                            toast.error("Please log in first");
-                            navigate("/login")
-                        }
-                        console.log(data.user.id)
-                        setUserId(data.user.id)
-                        setUsers(data.user)
-                        console.log(data.status);
+                        console.log(data.id);
+                        let id = data.id
+                        localStorage.setItem('user_id', id)
+                        console.log(localStorage.getItem('user_id'));
+                        let fromLocal = localStorage.getItem('user_id');
+                        console.log(fromLocal)
+                        console.log(userId)
+                        // alert(userId)
+                        // // alert(userId)
+                        setUsers(data)
+                        console.log(users)
+                        // console.log(data.status);
 
-                    }).catch((error) => {
-                        // toast.error("Please log in first");
-                        // navigate("/login")
-                    });
+                    })
+                }
+                else {
+                    alert("false")
+                    toast.error("Please log in first");
+                    navigate("/login")
                 }
             })
 
@@ -382,23 +396,39 @@ const Dashboard = () => {
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
-                        setPercentage(data.count)
+                        console.log(data.count)
 
-                        if (data.count <= 33) {
+                        setPercentage(data.count)
+                        if (data.count == 0) {
                             setUsersHide(true)
                             setProjectHide(false)
                             setServiceHide(false)
+                            setCompleteHide(false)
+                        }
+                        else if (data.count == 33) {
+                            setUsersHide(false)
+                            setProjectHide(false)
+                            setServiceHide(true)
+                            setCompleteHide(false)
+
                         }
                         else if (data.count <= 66) {
+                            setCompleteHide(false)
+
                             setUsersHide(false)
                             setProjectHide(true)
                             setServiceHide(false)
 
+
                         }
-                        else if (data.count <= 100) {
+
+                        else if (data.count > 66) {
+
                             setUsersHide(false)
                             setProjectHide(false)
-                            setServiceHide(true)
+                            setServiceHide(false)
+                            setCompleteHide(true)
+
 
                         }
                         else {
@@ -413,7 +443,7 @@ const Dashboard = () => {
                     // });
                 }
             })
-    }, [triggerLogout])
+    }, [waitForChanges])
 
     const logOut = () => {
         fetch("/log_out",
@@ -432,6 +462,14 @@ const Dashboard = () => {
     }
 
     const CopyLink = () => {
+       
+    //    alert(url)
+
+        // document.body.appendChild(dummy);
+        // dummy.value = text;
+        // dummy.select();
+        // document.execCommand('copy');
+        // document.body.removeChild(dummy);
         return (
             <div class="row">
                 <div class="col-md-12  col-sm-12 col-lg-12 center_everything">
@@ -448,11 +486,12 @@ const Dashboard = () => {
                                     <div class="col-md-12 col-lg-8  col-sm-12 ">
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                            <input type="text" class="form-control"  placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
                                             <div class="input-group-append">
 
                                                 <span class="input-group-text" id="basic-addon2">Copy Profile link</span>
                                             </div>
+                                            <Link className=" m-3 menu_ orange text-white" to="/portfolio">View Profile</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -497,7 +536,7 @@ const Dashboard = () => {
                             <div class="col-12">
                                 <div class="section-heading">
                                     <h2 class="section-title">Dashboard</h2>
-                                    <h6 class=" red_text">Feel free to contact me anytime</h6>
+                                    <h6 class=" red_text">Thank you for, using Portfolio Maker.</h6>
                                 </div>
                             </div>
                         </div>
@@ -533,14 +572,13 @@ const Dashboard = () => {
                         </div>
 
 
-                        {usersHide && <Profile user_id={userId} />}
+                        {usersHide && <Profile updateState={updateState} />}
 
-                        {servicesHide && <Services user_id={userId} />}
+                        {servicesHide && <Services updateState={updateState} user_id={userId} />}
 
-                        {projectHide && <Projects user_id={userId} />}
-                        {projectHide && <CopyLink />}
+                        {projectHide && <Projects updateState={updateState} user_id={userId} />}
+                        {completerHide && <CopyLink  />}
 
-                        <CopyLink />
 
 
 

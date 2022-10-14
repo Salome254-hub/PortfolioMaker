@@ -41,17 +41,19 @@ const Login = () => {
                     rawData.json().then((data) => {
                         //   setUserProfile(data);
                         console.log(data)
+                        localStorage.setItem("signup_id",data.id)
+                        // console.log(localStorage.getItem("signup_id"));
                         toast.success("Loged in successfully!")
                         navigate("/dashboard")
-                        // console.log(data);
+                        
 
 
-                    }).error((error) => {
-                        setEmail("")
-                        setPassword("")
-                        toast.error('Wrong email or password')
-        
                     })
+                }
+                else{
+                    setEmail("")
+                    setPassword("")
+                    toast.error('Wrong email or password')
                 }
             })
 

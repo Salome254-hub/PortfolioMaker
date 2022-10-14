@@ -3,10 +3,11 @@ import Signup_ from '../Images/signup.gif'
 import react, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import Logo from '../Images/logo.png'
-import { Link } from "react-router-dom"
+import { Link ,useNavigate} from "react-router-dom"
 
 //POST
 const registerNewUser = (data) => {
+
   fetch("/signup", {
     method: 'POST',
     body: JSON.stringify(
@@ -18,8 +19,6 @@ const registerNewUser = (data) => {
   }).then((res) => res.json())
     .then((post) => {
       console.log(post)
-
-
       toast.success('User succesfully added!')
     })
     .catch((err) => {
@@ -39,6 +38,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const navigate= useNavigate();
 
   //TOAST
 
@@ -55,6 +55,8 @@ const SignUp = () => {
     setEmail("")
     setPassword("")
     setConfirmPassword("")
+    navigate("/login")
+
 
   }
   //HANDLING INPUTS
