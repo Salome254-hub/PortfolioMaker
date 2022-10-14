@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginPic from '../Images/login.gif'
 import toast, { Toaster } from 'react-hot-toast';
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, redirect } from "react-router-dom"
 
 import Logo from '../Images/logo.png'
 // import Logo from '../Images/logo.png';
@@ -13,7 +13,7 @@ const Login = () => {
     //STATES
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
-
+    const [user, setUser]=useState('')
     //HANDLING INPUT
     const handlePassword = (e) => {
         setPassword(e.target.value)

@@ -4,7 +4,7 @@ import react, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import Logo from '../Images/logo.png'
 import { Link } from "react-router-dom"
-
+import React from 'react';
 //POST
 const registerNewUser = (data) => {
   fetch("/signup", {

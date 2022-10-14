@@ -2,7 +2,7 @@ class ServicesController < ApplicationController
     
     
     def index
-        service = Service.All
+        service = Service.all
         render json: service, status: :ok
     end
 

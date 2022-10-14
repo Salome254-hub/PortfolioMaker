@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_130415) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_124252) do
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "subject"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_130415) do
     t.string "project_title"
     t.string "project_link"
     t.string "image_url"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,7 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_130415) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "signups", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "email"
     t.integer "age"
     t.string "location"
