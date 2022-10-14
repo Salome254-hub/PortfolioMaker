@@ -368,7 +368,7 @@ const Dashboard = () => {
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
-                        console.log(data.id);
+                        // console.log(data.id);
                         let id = data.id
                         localStorage.setItem('user_id', id)
                         console.log(localStorage.getItem('user_id'));

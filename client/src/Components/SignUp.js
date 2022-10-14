@@ -3,8 +3,8 @@ import Signup_ from '../Images/signup.gif'
 import react, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import Logo from '../Images/logo.png'
-import { Link ,useNavigate} from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom"
+import React from 'react';
 //POST
 const registerNewUser = (data) => {
 
