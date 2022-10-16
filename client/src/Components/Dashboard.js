@@ -451,13 +451,15 @@ const Dashboard = () => {
             .then((data) => {
 
 
-                toast.success("Loged out successfully!");
                 navigate("/login")
+                toast.success("Loged out successfully!");
+
 
 
             }).catch((error) => {
-                toast.error("Please log in first");
                 navigate("/login")
+                toast.error("Please log in first");
+
             });
     }
 
