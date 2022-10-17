@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.4"
 
-gem 'pg', '~> 1.1'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
@@ -63,3 +63,12 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :production do
+  gem 'pg', '~> 1.4', '>= 1.4.3'
+
+end
+
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
