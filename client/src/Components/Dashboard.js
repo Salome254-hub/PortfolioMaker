@@ -175,7 +175,7 @@ const Services = ({ updateState }) => {
 
     const handleService = (event) => {
         event.preventDefault();
-        fetch("/services", {
+        fetch("https://portfoliomaker-app.herokuapp.com/services", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -251,7 +251,7 @@ const Projects = ({ updateState }) => {
 
     const handleProject = (event) => {
         event.preventDefault();
-        fetch("/projects", {
+        fetch("https://portfoliomaker-app.herokuapp.com/projects", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -351,7 +351,7 @@ const Dashboard = () => {
 
     //CHECK PROGRESS
     useEffect(() => {
-        fetch("/clients")
+        fetch("https://portfoliomaker-app.herokuapp.com/clients")
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
@@ -364,7 +364,7 @@ const Dashboard = () => {
 
 
         //Check log in status
-        fetch("/get_user")
+        fetch("https://portfoliomaker-app.herokuapp.com/get_user")
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
@@ -392,7 +392,7 @@ const Dashboard = () => {
 
 
         //Check profile progress
-        fetch("/check_progress")
+        fetch("https://portfoliomaker-app.herokuapp.com/check_progress")
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
@@ -446,7 +446,7 @@ const Dashboard = () => {
     }, [waitForChanges])
 
     const logOut = () => {
-        fetch("/log_out",
+        fetch("https://portfoliomaker-app.herokuapp.com/log_out",
             { method: 'DELETE' })
             .then((data) => {
 
