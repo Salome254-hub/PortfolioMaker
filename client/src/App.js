@@ -21,7 +21,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/me").then((response) => {
+    fetch("https://portfolio-maker254.herokuapp.com/me").then((response) => {
       if (response.ok) {
         response.json().then((check) => {
           setUser(check);

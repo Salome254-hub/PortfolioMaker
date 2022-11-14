@@ -31,7 +31,7 @@ const Profile = ({ updateState }) => {
 
     const handleProfile = (event) => {
         event.preventDefault();
-        fetch("/users", {
+        fetch("https://portfolio-maker254.herokuapp.com/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -175,7 +175,7 @@ const Services = ({ updateState }) => {
 
     const handleService = (event) => {
         event.preventDefault();
-        fetch("/services", {
+        fetch("https://portfolio-maker254.herokuapp.com/services", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -251,7 +251,7 @@ const Projects = ({ updateState }) => {
 
     const handleProject = (event) => {
         event.preventDefault();
-        fetch("/projects", {
+        fetch("https://portfolio-maker254.herokuapp.com/projects", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -351,7 +351,7 @@ const Dashboard = () => {
 
     //CHECK PROGRESS
     useEffect(() => {
-        fetch("/clients")
+        fetch("https://portfolio-maker254.herokuapp.com/clients")
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
@@ -364,7 +364,7 @@ const Dashboard = () => {
 
 
         //Check log in status
-        fetch("/get_user")
+        fetch("https://portfolio-maker254.herokuapp.com/get_user")
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
@@ -392,7 +392,7 @@ const Dashboard = () => {
 
 
         //Check profile progress
-        fetch("/check_progress")
+        fetch("https://portfolio-maker254.herokuapp.com/check_progress")
             .then((data) => {
                 if (data.ok) {
                     data.json().then((data) => {
@@ -446,7 +446,7 @@ const Dashboard = () => {
     }, [waitForChanges])
 
     const logOut = () => {
-        fetch("/log_out",
+        fetch("https://portfolio-maker254.herokuapp.com/log_out",
             { method: 'DELETE' })
             .then((data) => {
 

@@ -8,7 +8,7 @@ import { Link ,useNavigate} from "react-router-dom"
 //POST
 const registerNewUser = (data) => {
 
-  fetch("/signup", {
+  fetch("https://portfolio-maker254.herokuapp.com/signup", {
     method: 'POST',
     body: JSON.stringify(
       data

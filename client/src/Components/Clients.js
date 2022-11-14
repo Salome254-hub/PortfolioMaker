@@ -13,7 +13,7 @@ const Clients = () => {
 
 const handleClient = (event) => {
   event.preventDefault();
-  fetch("/clients", {
+  fetch("https://portfolio-maker254.herokuapp.com/clients", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
