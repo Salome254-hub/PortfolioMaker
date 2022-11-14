@@ -21,7 +21,7 @@ const Portfolio = () => {
     //FETCH ALL DATA
     useEffect(() => {
         let user_id=localStorage.getItem('signup_id')
-        fetch(`https://portfoliomaker-app.herokuapp.com/signups/${user_id}`).then((rawData) => {
+        fetch(`https://portfolio-maker254.herokuapp.com/signups/${user_id}`).then((rawData) => {
             if (rawData.ok) {
                 rawData.json().then((data) => {
                   setUserProfile(data.user);

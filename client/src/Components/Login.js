@@ -30,7 +30,7 @@ const Login = () => {
             password: password,
             email: email
         }
-        fetch("https://portfoliomaker-app.herokuapp.com/login",
+        fetch("https://portfolio-maker254.herokuapp.com/login",
             {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
